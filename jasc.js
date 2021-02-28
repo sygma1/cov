@@ -106,7 +106,7 @@ function isalphanumeric(x) {
 function count() 
 {
   check()
-  if (true) 
+  if (verif) 
   {
     score=0
     if (document.getElementById('aaa1').checked == true) 
