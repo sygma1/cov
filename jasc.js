@@ -40,7 +40,7 @@ function isnumeric(x)
   i=0
   f=true
   if (x.length!=8 || int(x[0])<=1) {
-
+    f=false
   }
   while ((f)&&i<(x.length)) 
   {
