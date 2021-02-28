@@ -1,8 +1,15 @@
-function agee() 
+function check() {
+  verif=true
+  isalphabetic(document.getElementById("name").value)
+  isalphabetic(document.getElementById("prename").value)
+  agee(document.getElementById("wa9et").value)
+  isnumeric(document.getElementById("numero").value)
+  isalphanumeric(document.getElementById("mail").value)
+
+}
+function agee(x) 
 {
-  let Bdate = document.getElementById("wa9et").value;
-  let Bday = +new Date(Bdate);
-  age = Math.round((Date.now() - Bday) / 31557600000);
+  age=x
 }
 function isalphabetic(x) 
 {
@@ -15,7 +22,7 @@ function isalphabetic(x)
   }
   while ((f)&&i<(x.length)) 
   {
-    if (alph.indexOf(x[i])<0) 
+    if ((alph.indexOf(x[i]))<0) 
     {
       f=false
     }
@@ -32,12 +39,12 @@ function isnumeric(x)
   num="1234567890"
   i=0
   f=true
-  if (x.length<8 || int(x[0])<=1) {
+  if (x.length!=8 || int(x[0])<=1) {
 
   }
   while ((f)&&i<(x.length)) 
   {
-    if (num.indexOf(x[i])<0) 
+    if ((num.indexOf(x[i]))<0) 
     {
       f=false
     }
@@ -60,10 +67,11 @@ function isalphanumeric(x) {
   }
   while ((f)&&i<(x.length)) 
   {
-    if (stuff.indexOf(x[i])<0) 
+    if ((stuff.indexOf(x[i]))<0) 
     {
       f=false
     }
+    i=i+1
   }
   if (f==false) 
   {
@@ -97,82 +105,82 @@ function isalphanumeric(x) {
 }
 function count() 
 {
-  chec()
-  if ((verif)) 
+  check()
+  if (true) 
   {
-    v=0
+    score=0
     if (document.getElementById('aaa1').checked == true) 
     {
-      v=v+1
+      score=score+1
     }
     if (document.getElementById('aaa2').checked == true) {
-      v=v+1
+      score=score+1
     }
     if (document.getElementById('aaa3').checked == true) 
     {
-      v=v+1
+      score=score+1
     }
     if (document.getElementById('aaa4').checked == true) 
     {
-      v=v+1
+      score=score+1
     }
     if (document.getElementById('g').checked == true) {
-      v=v+3
+      score=score+3
     }
     if (document.getElementById('h').checked == true) {
-      v=v+2
+      score=score+2
     }
     if (document.getElementById('i1').checked == true) {
-      v=v+3
+      score=score+3
     }
     if (document.getElementById('i2').checked == true) {
-      v=v+2
+      score=score+2
     }
     if (document.getElementById('j').checked == true) {
-      v=v+5
+      score=score+5
     }
     if (document.getElementById('k').checked == true) {
-      v=v+5
+      score=score+5
     }
     if (document.getElementById('l').checked == true) {
-      v=v+5;
+      score=score+5;
     }
     if (document.getElementById('m').checked == true) {
-      v=v+2;
+      score=score+2;
     }
     if (document.getElementById('n').checked == true) {
-      v=v+2;
+      score=score+2;
     }
     if (document.getElementById('o').checked == true) {
-      v=v+1;
+      score=score+1;
     }
-    if (v<=7 && age>=65) 
+    if (score<=7 && age>=65) 
     {
       alert("Vous devirez aller bien, mais faites attention à vous, et n’oubliez pas de respecter les gestes barrières")
     }
-    if (v<=7 && age<=65) 
+    if (score<=7 && age<=65) 
     {
       alert("Vous devirez aller bien, mais vous devriez rester confiné chez vous")
     }
-    if (8<=v<=18 && alergie==true) 
+    if (8<=score && score<=18 && alergie==true) 
     {
       alert("Vous avez des majeurs symptômes du COVID-19. Vous devriez vous confiner au plus vite, et faire un test de dépistage.")
     }
-    if (8<=v<=18 && alergie==false) 
+    if (8<=score && score<=18 && alergie==false) 
     {
       alert("Précipitez-vous au centre COVID le plus proche pour être pris en charge.")
     }
-    if (v>18) 
+    if (score>18) 
     {
       alert("Précipitez-vous au centre COVID le plus proche pour être pris en charge.")
     }
     document.getElementById("form").remove();
-    for (let i = 0; i < 22; i++) 
+    for (let inf = 0; inf < 22; inf++) 
     {
-      document.getElementsByTagName("input")[i].disabled = true;
-      if (document.getElementsByTagName("input")[i].checked==false) 
+      document.getElementsByTagName("input")[inf].disabled = true;
+      if (document.getElementsByTagName("input")[inf].checked==false) 
       {
-        document.getElementsByTagName("input")[i].style.opacity = "0.5";
+        document.getElementsByTagName("input")[inf].style.opacity = "0.2";
       }
     }
   }
