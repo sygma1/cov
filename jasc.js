@@ -9,6 +9,10 @@ function check() {
 }
 function agee(x) 
 {
+  if (x.length<=0) {
+    alert("pas de 'age'")
+    verif=false
+  }
   age=x
 }
 function isalphabetic(x) 
@@ -39,7 +43,7 @@ function isnumeric(x)
   num="1234567890"
   var i=0
   var f=true
-  while ((f)&&i<(x.length)) 
+  while ((f) && i<(x.length)) 
   {
     if (x.length!=8 || x[0]==1) 
     {
@@ -104,13 +108,20 @@ function isalphanumeric(x) {
       alert("ch2")
     }
   }
-  for (let i = ((x.indexOf("."))+1); i < x.length; i++) {
-    if (i<2 || i>4) 
+  s=true
+  while ((s)) 
+  {
+    for (let i = ((x.indexOf("."))+1); i < x.length; i++) 
     {
-      verif = false
-      alert("ch3")
+      if (i<2 || i>4) 
+      {
+        verif = false
+        alert("ch3")
+        var s =false
+      }
+      
     }
-    
+    s=false
   }
 }
 function count() 
