@@ -5,7 +5,7 @@ function check() {
   agee(document.getElementById("wa9et").value)
   isnumeric(document.getElementById("numero").value)
   isalphanumeric(document.getElementById("mail").value)
-
+  return verif
 }
 function agee(x) 
 {
@@ -15,18 +15,18 @@ function isalphabetic(x)
 {
   var x=x.toLowerCase()
   alph="azertyuiopqsdfghjklmwxcvbn"
-  i=0
-  f=true
+  var i=0
+  var f=true
   if (x.length<3) {
-    f=false
+    var f=false
   }
   while ((f)&&i<(x.length)) 
   {
     if ((alph.indexOf(x[i]))<0) 
     {
-      f=false
+      var f=false
     }
-    i=i+1
+    var i=i+1
   }
   if (f==false) 
   {
@@ -37,18 +37,19 @@ function isalphabetic(x)
 function isnumeric(x) 
 {
   num="1234567890"
-  i=0
-  f=true
-  if (x.length!=8 || int(x[0])<=1) {
-    f=false
-  }
+  var i=0
+  var f=true
   while ((f)&&i<(x.length)) 
   {
+    if (x.length!=8 || x[0]==1) 
+    {
+      var f=false
+    }
     if ((num.indexOf(x[i]))<0) 
     {
-      f=false
+      var f=false
     }
-    i=i+1
+    var i=i+1
   }
   if (f==false) 
   {
@@ -59,23 +60,23 @@ function isnumeric(x)
 function isalphanumeric(x) {
   var x=x.toLowerCase()
   stuff="1234567890azertyuiopqsdfghjklmwxcvbn.@"
-  i=0
-  f=true
+  var i=0
+  var f=true
   if (x.length<0||x.length>50) 
   {
-    f=true
+    var f=false
   }
   while ((f)&&i<(x.length)) 
   {
     if ((stuff.indexOf(x[i]))<0) 
     {
-      f=false
+      var f=false
     }
-    i=i+1
+    var i=i+1
   }
   if (f==false) 
   {
-    alert("pas stuff");
+    alert("pas alphanumeric");
     verif=false
   }
   if (x.indexOf("@") != x.lastIndexOf("@")) 
@@ -96,33 +97,47 @@ function isalphanumeric(x) {
     alert("pas de '.'");
     verif=false
   }
-  ch1=x[0,(x.indexOf("@"))]
-  ch2=x[((x.indexOf("@"))+1),(indexOf("."))]
-  ch3=x[((indexOf("."))+1),(x.length)]
-  if (ch1.length) {
-
+  for (let i = (x.indexOf("@")+1); i < (x.indexOf(".")-1); i++) 
+  {
+    if (i<3) {
+      verif = false
+      alert("ch2")
+    }
+  }
+  for (let i = ((x.indexOf("."))+1); i < x.length; i++) {
+    if (i<2 || i>4) 
+    {
+      verif = false
+      alert("ch3")
+    }
+    
   }
 }
 function count() 
 {
-  check()
-  if (verif) 
+  
+  if ((check())) 
   {
     score=0
+    alergie=false
     if (document.getElementById('aaa1').checked == true) 
     {
       score=score+1
+      alergie=true
     }
     if (document.getElementById('aaa2').checked == true) {
       score=score+1
+      alergie=true
     }
     if (document.getElementById('aaa3').checked == true) 
     {
       score=score+1
+      alergie=true
     }
     if (document.getElementById('aaa4').checked == true) 
     {
       score=score+1
+      alergie=true
     }
     if (document.getElementById('g').checked == true) {
       score=score+3
@@ -156,32 +171,39 @@ function count()
     }
     if (score<=7 && age>=65) 
     {
-      alert("Vous devirez aller bien, mais faites attention à vous, et n’oubliez pas de respecter les gestes barrières")
+      anser='Vous devirez aller bien, mais faites attention à vous, et n’oubliez pas de respecter les gestes barrières'
+      document.getElementById("form").innerHTML = ('<div style="background-color:yellow;"><h3>votre resultat:</h3><h4 style="text-align: center;">'+anser+'</h4></br>');
     }
     if (score<=7 && age<=65) 
     {
-      alert("Vous devirez aller bien, mais vous devriez rester confiné chez vous")
+      anser='Vous devirez aller bien, mais vous devriez rester confiné chez vous'
+      document.getElementById("form").innerHTML = ('<div style="background-color:green;"><h3>votre resultat:</h3><h4 style="text-align: center;">'+anser+'</h4></br>');
     }
     if (8<=score && score<=18 && alergie==true) 
     {
-      alert("Vous avez des majeurs symptômes du COVID-19. Vous devriez vous confiner au plus vite, et faire un test de dépistage.")
+      anser='Vous avez des majeurs symptômes du COVID-19. Vous devriez vous confiner au plus vite, et faire un test de dépistage.'
+      document.getElementById("form").innerHTML = ('<div style="background-color:red;"><h3>votre resultat:</h3><h4 style="text-align: center;">'+anser+'</h4></br>');
     }
     if (8<=score && score<=18 && alergie==false) 
     {
-      alert("Précipitez-vous au centre COVID le plus proche pour être pris en charge.")
+      anser='Précipitez-vous au centre COVID le plus proche pour être pris en charge.'
+      document.getElementById("form").innerHTML = ('<div style="background-color::yellow;"><h3>votre resultat:</h3><h4 style="text-align: center;">'+anser+'</h4></br>');
     }
     if (score>18) 
     {
-      alert("Précipitez-vous au centre COVID le plus proche pour être pris en charge.")
+      anser='Précipitez-vous au centre COVID le plus proche pour être pris en charge.'
+      document.getElementById("form").innerHTML = ('<div style="background-color:red;"><h3>votre resultat:</h3><h4 style="text-align: center;">'+anser+'</h4></br>');
     }
-    document.getElementById("form").remove();
-    for (let inf = 0; inf < 22; inf++) 
+    for (let inde = 0; inde < 23; inde++) 
     {
-      document.getElementsByTagName("input")[inf].disabled = true;
+      document.getElementsByTagName("input")[inde].disabled = true;
+    }
+    for (let inf = 4; inf < 22; inf++) 
+    {
       if (document.getElementsByTagName("input")[inf].checked==false) 
       {
-        document.getElementsByTagName("input")[inf].style.opacity = "0.2";
+        document.getElementsByTagName("input")[inf].style.opacity = "0.6";
       }
-    }
+    } 
   }
 }
